@@ -1,0 +1,31 @@
+---
+- name: apt install zsh, git-core
+  apt: name={{item}} state=present
+  with_items:
+   - zsh
+   - git-core
+  become: yes
+- name: pip install pexpect
+  pip:
+    name: pexpect
+  become: yes
+- name: download zsh master tools
+  get_url:
+    url: https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh
+    dest: /tmp/zsh_tools.sh
+- name: install zsh master tools
+  command: zsh /tmp/zsh_tools.sh
+- name: chsh zsh
+  expect:
+    command: chsh -s /usr/bin/zsh root
+    responses:
+      Password: '{{ ansible_sudo_pass }}'
+  become: yes
+- name: disable shared history
+  lineinfile:
+    dest: /home/{{ remote_user }}/.zshrc
+    line: unsetopt share_history
+    regexp: "unsetopt share_history"
+    state: present
+    insertafter: EOF
+    create: True

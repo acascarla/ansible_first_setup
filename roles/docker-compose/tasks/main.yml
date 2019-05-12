@@ -1,0 +1,13 @@
+---
+- name: register os name
+  command: uname -s
+  register: os_name
+- name: register os arch
+  command: uname -m
+  register: os_arch
+- name: download docker-compose in /usr/local/bin/
+  get_url:
+    url: https://github.com/docker/compose/releases/download/{{ docker_compose_version }}/docker-compose-{{ os_name.stdout }}-{{ os_arch.stdout }}
+    dest: /usr/local/bin/docker-compose
+    mode: 0755
+  become: yes

@@ -1,0 +1,65 @@
+remote_user: ubuntu
+remote_user_password: ubuntu
+postgres_user:
+  name: ubuntu
+  password: ubuntu
+git:
+  email: user@domain.com
+  name: name
+python_36_minor_version: 4
+vagrant_version: 2.1.1
+vagrant_box_folder: ubuntu16
+vagrant_box_image: ubuntu/xenial64
+slack_version: 3.0.5
+profile_file_path: ~/.zshrc
+docker_compose_version: 1.21.2
+vsc_extensions:
+  - ms-python.python
+  - eamodio.gitlens
+  - ow.vscode-subword-navigation
+
+kettle_home: /opt/kettle
+pdi_libs_to_delete:
+  - pdi-engine-api-7.1.0.0-12.jar
+  - pdi-engine-spark-7.1.0.0-12.jar
+  - pdi-osgi-bridge-core-7.1.0.0-12.jar
+  - pdi-spark-driver-7.1.0.0-12.jar
+  - pentaho-capability-manager-7.1.0.0-12.jar
+  - pentaho-connections-7.1.0.0-12.jar
+  - pentaho-cwm-1.5.4.jar
+  - pentaho-database-model-7.1.0.0-12.jar
+  - pentaho-metaverse-api-7.1.0.0-12.jar
+  - pentaho-osgi-utils-api-7.1.0.0-12.jar
+  - pentaho-platform-api-7.1.0.0-12.jar
+  - pentaho-platform-core-7.1.0.0-12.jar
+  - pentaho-platform-repository-7.1.0.0-12.jar
+  - pentaho-registry-7.1.0.0-12.jar
+  - pentaho-service-coordinator-7.1.0.0-12.jar
+pdi_plugins_to_delete:
+  - elasticsearch-bulk-insert-plugin
+  - gp-bulk-loader-plugin
+  - kettle5-log4j-plugin
+  - kettle-drools5-plugin
+  - kettle-dummy-plugin
+  - kettle-gpload-plugin
+  - kettle-hl7-plugin
+  - kettle-json-plugin
+  - kettle-openerp-plugin
+  - kettle-palo-plugin
+  - kettle-sap-plugin
+  - kettle-shapefilereader-plugin
+  - kettle-version-checker
+  - lucid-db-streaming-loader-plugin
+  - ms-access-bulk-loader-plugin
+  - pdi-core-plugins
+  - pdi-google-analytics-plugin
+  - pdi-pur-plugin
+  - pdi-salesforce-plugin
+  - pdi-teradata-tpt-plugin
+  - pdi-xml-plugin
+  - pentaho-cassandra-plugin
+  - platform-utils-plugin
+  - VerticaBulkLoader
+  - kettle-xml-plugin
+  - pdi-google-analytics-plugin-ce
+  - teradata-tpt-bulk-loader

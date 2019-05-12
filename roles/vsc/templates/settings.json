@@ -1,0 +1,29 @@
+{
+    "editor.rulers": [79],
+    "gitlens.settings.mode": "advanced",
+    "gitlens.advanced.messages": {
+        "suppressCommitHasNoPreviousCommitWarning": false,
+        "suppressCommitNotFoundWarning": false,
+        "suppressFileNotUnderSourceControlWarning": false,
+        "suppressGitVersionWarning": false,
+        "suppressLineUncommittedWarning": false,
+        "suppressNoRepositoryWarning": false,
+        "suppressResultsExplorerNotice": false,
+        "suppressShowKeyBindingsNotice": true,
+        "suppressUpdateNotice": false,
+        "suppressWelcomeNotice": true
+    },
+    "gitlens.gitExplorer.enabled": false,
+    "gitlens.codeLens.scopes": [
+        "document"
+    ],
+    "gitlens.hovers.currentLine.over": "line",
+    "gitlens.keymap": "chorded",
+    "gitlens.historyExplorer.enabled": true,
+    "python.linting.pylintEnabled": false,
+    "python.linting.pep8Enabled": false,
+    "python.linting.flake8Enabled": true,
+    "python.linting.flake8Args": [
+        "--max-line-length=79",
+    ],
+}

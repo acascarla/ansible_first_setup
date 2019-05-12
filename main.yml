@@ -1,0 +1,32 @@
+---
+- name: Install Initial Stuff
+  hosts: all
+  gather_facts: no
+
+  pre_tasks:
+  - name: Install python for Ansible
+    raw: test -e /usr/bin/python || (apt -y update && apt install -y python-minimal)
+    register: output
+    changed_when: output.stdout != ""
+    tags: always
+    become: yes
+  - setup: # aka gather_facts
+
+  roles:
+    - apt
+    - pip
+    - terminator
+    - git
+    - zsh
+    - postgres
+    - ansible
+    - slack
+    - python36
+    - vsc
+    - dbeaver
+    - docker
+    - docker-compose
+    - virtualenvwrapper
+    - virtualbox
+    - vagrant
+    - pdi

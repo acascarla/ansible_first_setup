@@ -1,0 +1,37 @@
+---
+- name: pip install virtualenvwrapper
+  command: pip install virtualenvwrapper
+  become: yes
+- name: ensure {{ profile_file_path }} file exists with execution permissions
+  file:
+    path: '{{ profile_file_path }}'
+    state: touch
+    mode: 0755
+- name: ensure ~/pipprojects folder exists
+  file:
+    path: ~/pipprojects
+    state: directory
+- name: add WORKON_HOME env var
+  lineinfile:
+    dest: '{{ profile_file_path }}'
+    line: export WORKON_HOME=${HOME}/.virtualenvs
+    regexp: ^export WORKON_HOME\=\$\{HOME\}\/\.virtualenvs$
+    state: present
+    insertafter: EOF
+    create: True
+- name: add PROJECT_HOME env var
+  lineinfile:
+    dest: '{{ profile_file_path }}'
+    line: export PROJECT_HOME=${HOME}/pipprojects
+    regexp: ^export PROJECT_HOME\=\$\{HOME\}\/pipprojects$
+    state: present
+    insertafter: EOF
+    create: True
+- name: add source virtualenvwrapper
+  lineinfile:
+    dest: '{{ profile_file_path }}'
+    line: source /usr/local/bin/virtualenvwrapper.sh
+    regexp: ^source /usr/local/bin/virtualenvwrapper.sh$
+    state: present
+    insertafter: EOF
+    create: True

@@ -1,0 +1,86 @@
+---
+- name: Ensure java jre repository is on the system
+  apt_repository:
+    repo: ppa:webupd8team/java
+    state: present
+    codename: bionic
+    update_cache: yes
+  become: yes
+  
+- name: Automatically select the Oracle License
+  shell: echo debconf shared/accepted-oracle-license-v1-1 select true | sudo debconf-set-selections
+  changed_when: false
+
+- name: Ensure jre 8 is on the system
+  apt: 
+    name: oracle-java8-installer
+  become: yes
+
+- name: Ensure jre 8 environment variables are on the system
+  apt: 
+    name: oracle-java8-set-default
+  become: yes
+
+- name: Ensure other required packages are on the system
+  apt: 
+    name: '{{ item }}'
+  with_items:
+    - libwebkitgtk-1.0-0
+    - zip
+    - unzip
+  become: yes
+
+- name: Download pdi
+  get_url:
+    url: https://netix.dl.sourceforge.net/project/pentaho/Data%20Integration/7.1/pdi-ce-7.1.0.0-12.zip
+    dest: /tmp/pdi.zip
+    mode: 0440
+
+- name: Unarchive pdi
+  unarchive:
+    src: /tmp/pdi.zip
+    dest: /opt/
+    remote_src: yes
+  become: yes
+
+- name: Remove unnecessary pdi libs to make it faster
+  file:
+    state: absent
+    path: /opt/data-integration/lib/{{ item }}
+  with_items:
+    - '{{ pdi_libs_to_delete }}'
+  become: yes
+
+- name: Remove unnecessary pdi plugins to make it faster
+  file:
+    state: absent
+    path: /opt/data-integration/plugins/{{ item }}
+  with_items:
+    - '{{ pdi_plugins_to_delete }}'
+  become: yes
+    
+- name: Create kettle user
+  user:
+    name: kettle
+    comment: kettle user
+    home: '{{ kettle_home }}'
+  become: yes
+
+- name: Create kettle configuration folder
+  file:
+    path: '{{ kettle_home }}/.kettle'
+    owner: kettle
+    group: kettle
+    mode: 0775
+    state: directory
+  become: yes
+
+- name: Ensure kettle.properties exists
+  copy:
+    content: ''
+    dest: '{{ kettle_home }}/.kettle/kettle.properties'
+    force: no
+    group: kettle
+    owner: kettle
+    mode: 0775
+  become: yes

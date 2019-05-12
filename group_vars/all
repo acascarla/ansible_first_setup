@@ -1,0 +1,79 @@
+remote_user: oalfonso
+ansible_sudo_pass: !vault |
+          $ANSIBLE_VAULT;1.1;AES256
+          33636439346139663137326262303331336435653962373938633230316132663034303739386262
+          6466336662623436396536396231376431653935323462610a343362363538316261316362356236
+          39643136613036323665356165313032386531386462363463373562633830323635343864623962
+          6530633364323337320a396163313439633034353930616331643938643632346162356465366530
+          3961
+postgres_user:
+  name: oriol
+  password: !vault |
+          $ANSIBLE_VAULT;1.1;AES256
+          62623035636631626134303530666662333230656239323964323361376638633730346437653862
+          3537656230356163616336653531653538633239666337360a353531363438663865393261353362
+          63653339313366393036306133303138323730393532363965396261613133666163616637346436
+          3432663331376233620a346639636661646436363437653766396237633233623734343038636230
+          3539
+git:
+  email: oriolalfonso@calidae.com
+  name: Oriol Alfonso
+python_36_minor_version: 8
+vagrant_version: 2.1.1
+vagrant_box_folder: ubuntu16
+vagrant_box_image: ubuntu/xenial64
+slack_version: 3.1.0
+profile_file_path: ~/.zshrc
+docker_compose_version: 1.21.2
+vsc_extensions:
+  - ms-python.python
+  - eamodio.gitlens
+  - ow.vscode-subword-navigation
+  - ms-vscode.sublime-keybindings
+  - mikestead.dotenv
+
+kettle_home: /opt/kettle
+pdi_libs_to_delete:
+  - pdi-engine-api-7.1.0.0-12.jar
+  - pdi-engine-spark-7.1.0.0-12.jar
+  - pdi-osgi-bridge-core-7.1.0.0-12.jar
+  - pdi-spark-driver-7.1.0.0-12.jar
+  - pentaho-capability-manager-7.1.0.0-12.jar
+  - pentaho-connections-7.1.0.0-12.jar
+  - pentaho-cwm-1.5.4.jar
+  - pentaho-database-model-7.1.0.0-12.jar
+  - pentaho-metaverse-api-7.1.0.0-12.jar
+  - pentaho-osgi-utils-api-7.1.0.0-12.jar
+  - pentaho-platform-api-7.1.0.0-12.jar
+  - pentaho-platform-core-7.1.0.0-12.jar
+  - pentaho-platform-repository-7.1.0.0-12.jar
+  - pentaho-registry-7.1.0.0-12.jar
+  - pentaho-service-coordinator-7.1.0.0-12.jar
+pdi_plugins_to_delete:
+  - elasticsearch-bulk-insert-plugin
+  - gp-bulk-loader-plugin
+  - kettle5-log4j-plugin
+  - kettle-drools5-plugin
+  - kettle-dummy-plugin
+  - kettle-gpload-plugin
+  - kettle-hl7-plugin
+  - kettle-json-plugin
+  - kettle-openerp-plugin
+  - kettle-palo-plugin
+  - kettle-sap-plugin
+  - kettle-shapefilereader-plugin
+  - kettle-version-checker
+  - lucid-db-streaming-loader-plugin
+  - ms-access-bulk-loader-plugin
+  - pdi-core-plugins
+  - pdi-google-analytics-plugin
+  - pdi-pur-plugin
+  - pdi-salesforce-plugin
+  - pdi-teradata-tpt-plugin
+  - pdi-xml-plugin
+  - pentaho-cassandra-plugin
+  - platform-utils-plugin
+  - VerticaBulkLoader
+  - kettle-xml-plugin
+  - pdi-google-analytics-plugin-ce
+  - teradata-tpt-bulk-loader

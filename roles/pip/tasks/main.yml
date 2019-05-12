@@ -1,0 +1,14 @@
+---
+- name: download get-pip from pypa
+  get_url:
+    url: https://bootstrap.pypa.io/get-pip.py
+    dest: /tmp/
+- name: python /tmp/get-pip.py (install pip)
+  command: /usr/bin/python /tmp/get-pip.py
+  become: yes
+- name: pip install flake8, python-dateutil
+  pip: name={{item}} state=present
+  with_items:
+   - flake8
+   - python-dateutil
+  become: yes

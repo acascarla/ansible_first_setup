@@ -1,0 +1,36 @@
+---
+- name: register os architecture
+  command: uname -m
+  register: os_arch
+- name: download vagrant
+  get_url:
+    url: https://releases.hashicorp.com/vagrant/{{ vagrant_version }}/vagrant_{{ vagrant_version }}_{{ os_arch.stdout }}.deb
+    dest: /tmp/
+  become: yes
+- name: install vagrant
+  command: dpkg -E -i /tmp/vagrant_{{ vagrant_version }}_{{ os_arch.stdout }}.deb
+  become: yes
+- name: ensure ~/vagrant/{{ vagrant_box_folder }} folder exists
+  file:
+    path: ~/vagrant/{{ vagrant_box_folder }}
+    state: directory
+- name: vagrant box add {{ vagrant_box_image }}
+  command: vagrant box add {{ vagrant_box_image }}
+  ignore_errors: true
+  register: ubuntu_image
+- name: captured error notification
+  debug: msg="{{ ubuntu_image.stderr }}"
+  when: ubuntu_image.rc == 1
+
+- name: set Vagrantfile from template
+  template:
+    src: Vagrantfile
+    dest: ~/vagrant/{{ vagrant_box_folder }}/Vagrantfile
+
+- name: vagrant up
+  command: chdir=~/vagrant/{{ vagrant_box_folder }} vagrant up
+  ignore_errors: true
+  register: vagrant_up
+- name: captured error notification
+  debug: msg="{{ vagrant_up.stderr }}"
+  when: vagrant_up.rc == 1

@@ -1,0 +1,32 @@
+---
+- name: apt install requirements
+  apt: name={{item}} state=present
+  with_items:
+   - apt-transport-https
+   - ca-certificates
+   - curl
+   - gnupg2
+   - software-properties-common
+  become: yes
+- name: apt key https://download.docker.com/linux/debian/gpg
+  apt_key:
+    url: https://download.docker.com/linux/debian/gpg
+    state: present
+  become: yes
+- name: apt repository https://download.docker.com/linux/debian
+  apt_repository:
+    repo: deb [arch=amd64] https://download.docker.com/linux/debian stretch stable
+    state: present
+    update_cache: yes
+  become: yes
+- name: apt install docker-ce
+  apt:
+    name: docker-ce
+  become: yes
+- name: add user to docker group
+  user:
+    name: '{{ remote_user }}'
+    state: present
+    groups: docker
+    append: yes
+  become: yes

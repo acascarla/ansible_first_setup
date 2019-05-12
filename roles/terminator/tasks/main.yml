@@ -1,0 +1,13 @@
+---
+- name: apt install terminator
+  apt:
+    name: terminator
+  become: yes
+- name: make config dir
+  file:
+    path: ~/.config/terminator/
+    state: directory
+- name: set config
+  template:
+    src: config
+    dest: ~/.config/terminator/

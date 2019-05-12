@@ -1,0 +1,16 @@
+---
+- name: apt install software-properties-common
+  apt:
+    name: software-properties-common
+  become: yes
+- name: apt repository ppa:ansible/ansible
+  apt_repository:
+    repo: ppa:ansible/ansible
+    state: present
+    codename: xenial
+    update_cache: yes
+  become: yes
+- name: apt install ansible
+  apt:
+    name: ansible
+  become: yes

@@ -1,0 +1,9 @@
+---
+- name: apt install git
+  apt:
+    name: git
+  become: yes
+- name: set gitconfig
+  template:
+    src: gitconfig
+    dest: ~/.gitconfig

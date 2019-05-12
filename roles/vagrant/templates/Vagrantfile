@@ -1,0 +1,8 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+
+Vagrant.configure("2") do |config|
+  config.vm.box = "ubuntu/xenial64"
+  config.vm.provision "file", source: "~/.ssh/id_rsa.pub", destination: "~/.ssh/host.pub"
+  config.vm.provision "shell", inline: "cat ~vagrant/.ssh/host.pub >> ~vagrant/.ssh/authorized_keys"
+end

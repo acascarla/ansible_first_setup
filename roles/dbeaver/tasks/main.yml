@@ -1,0 +1,12 @@
+---
+- name: apt repository ppa:serge-rider/dbeaver-ce
+  apt_repository:
+    repo: ppa:serge-rider/dbeaver-ce
+    state: present
+    codename: xenial
+    update_cache: yes
+  become: yes
+- name: apt install dbeaver-ce
+  apt:
+    name: dbeaver-ce
+  become: yes
