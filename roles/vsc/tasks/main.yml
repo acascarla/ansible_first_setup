@@ -24,9 +24,13 @@
   command: code --install-extension {{ item }}
   with_items:
     - '{{ vsc_extensions }}'
+  become: yes
+  become_user: '{{ remote_user }}'
   register: vscode_result
   changed_when: "'already installed' not in vscode_result.stdout"
 - name: set settings
   template:
     src: settings.json
     dest: ~/.config/Code/User
+  become: yes
+  become_user: '{{ remote_user }}'

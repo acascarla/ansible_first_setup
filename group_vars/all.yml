@@ -1,4 +1,4 @@
-remote_user: oalfonso
+remote_user: oriol
 ansible_sudo_pass: !vault |
           $ANSIBLE_VAULT;1.1;AES256
           33636439346139663137326262303331336435653962373938633230316132663034303739386262

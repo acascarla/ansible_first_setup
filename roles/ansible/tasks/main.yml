@@ -7,7 +7,7 @@
   apt_repository:
     repo: ppa:ansible/ansible
     state: present
-    codename: '{{ ansible_lsb.codename }}'
+    codename: 'bionic'
     update_cache: yes
   become: yes
 - name: apt install ansible
