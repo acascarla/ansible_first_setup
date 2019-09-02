@@ -1,8 +1,13 @@
 ---
+- name: apt install requirements
+  apt: name={{item}} state=present
+  with_items:
+   - apt-transport-https
+   - software-properties-common
+   - wget
 - name: apt key https://packages.microsoft.com/keys/microsoft.asc
   apt_key:
     url: https://packages.microsoft.com/keys/microsoft.asc
-    keyring: /etc/apt/trusted.gpg.d/microsoft.gpg
     state: present
   become: yes
 - name: apt repostiroy https://packages.microsoft.com/repos/vscode

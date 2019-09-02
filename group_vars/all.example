@@ -6,9 +6,6 @@ postgres_user:
 git:
   email: user@domain.com
   name: name
-vagrant_version: 2.1.1
-vagrant_box_folder: ubuntu16
-vagrant_box_image: ubuntu/xenial64
 slack_version: 3.0.5
 profile_file_path: ~/.zshrc
 docker_compose_version: 1.21.2

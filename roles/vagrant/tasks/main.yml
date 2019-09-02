@@ -9,4 +9,4 @@
 - name: set Vagrantfile from template
   template:
     src: Vagrantfile
-    dest: ~/vagrant/{{ vagrant_box_folder }}/Vagrantfile
+    dest: ~/vagrant/bionic64/Vagrantfile

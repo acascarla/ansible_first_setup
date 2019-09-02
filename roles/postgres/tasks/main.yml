@@ -1,7 +1,23 @@
 ---
+- name: update
+  apt:
+    update_cache: yes
+  become: yes
+- name: upgrade
+  apt:
+    upgrade: dist
+  become: yes
+- name: apt key https://www.postgresql.org/media/keys/ACCC4CF8.asc
+  apt_key:
+    url: https://www.postgresql.org/media/keys/ACCC4CF8.asc
+    state: present
+  become: yes
+- name: ensure postgres apt repository exists
+  apt_repository: repo='deb http://apt.postgresql.org/pub/repos/apt/ {{ ansible_lsb.codename }}-pgdg main' update_cache=yes
+  become: yes
 - name: apt install postgresql
   apt:
-    name: postgresql
+    name: postgresql-11
   become: yes
 - name: pip install psycopg2
   pip:
@@ -11,6 +27,7 @@
   service:
     name: postgresql
     state: started
+  become: yes
 - name: create user
   postgresql_user:
     name: '{{ postgres_user.name }}'

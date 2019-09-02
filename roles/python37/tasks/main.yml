@@ -1,7 +1,16 @@
 ---
+- name: update
+  apt:
+    update_cache: yes
+  become: yes
+- name: upgrade
+  apt:
+    upgrade: dist
+  become: yes
 - name: apt install requirements
   apt: name={{item}} state=present
   with_items:
+   - software-properties-common
    - build-essential
    - checkinstall
    - libreadline-gplv2-dev
@@ -13,25 +22,14 @@
    - libc6-dev
    - libbz2-dev
   become: yes
-- name: download Python-3.7.4.tar.xz
-  get_url:
-    url: https://www.python.org/ftp/python/3.7.4/Python-3.7.4.tar.xz
-    dest: /tmp/
-- name: uncompress Python-3.7.4.tar.xz
-  unarchive:
-    remote_src: yes
-    src: /tmp/Python-3.7.4.tar.xz
-    dest: /tmp/
-- name: configure
-  command: ./configure
-  args:
-    chdir: /tmp/Python-3.7.4.tar.xz
-- name: make
-  command: make
-  args:
-    chdir: /tmp/Python-3.7.4.tar.xz
-- name: make altinstall
-  command: make altinstall
-  args:
-    chdir: /tmp/Python-3.7.4.tar.xz
+- name: apt repository ppa:deadsnakes/ppa
+  apt_repository:
+    repo: ppa:deadsnakes/ppa
+    state: present
+    codename: '{{ ansible_lsb.codename }}'
+    update_cache: yes
+  become: yes
+- name: apt install python3.7
+  apt:
+    name: python3.7
   become: yes

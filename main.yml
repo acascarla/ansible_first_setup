@@ -13,14 +13,14 @@
   - setup: # aka gather_facts
 
   roles:
-    - apt
-    - pip
-    - terminator
-    - git
-    - zsh
-    - ansible-role-postgresql
-    - ansible
-    - slack
+    # - apt
+    # - pip
+    # - terminator
+    # - git
+    # - zsh
+    # - postgres
+    # - ansible
+    # - slack
     - python37
     - vsc
     - dbeaver
