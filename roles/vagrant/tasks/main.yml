@@ -5,8 +5,4 @@
    - virtualbox
    - vagrant
   become: yes
-
-- name: set Vagrantfile from template
-  template:
-    src: Vagrantfile
-    dest: ~/vagrant/bionic64/Vagrantfile
+  

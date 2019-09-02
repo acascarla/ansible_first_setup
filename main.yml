@@ -17,15 +17,14 @@
     - pip
     - terminator
     - git
-    - zsh
-    - postgres
-    - ansible
-    - slack
     - python37
+    - virtualenvwrapper
+    - postgres
+    - slack
     - vsc
     - dbeaver
     - docker
     - docker-compose
-    - virtualenvwrapper
     - vagrant
-    - pdi
+    # - zsh
+    # - pdi

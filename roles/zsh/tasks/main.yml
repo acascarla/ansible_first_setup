@@ -11,10 +11,10 @@
   become: yes
 - name: download zsh master tools
   get_url:
-    url: https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh
+    url: https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh
     dest: /tmp/zsh_tools.sh
 - name: install zsh master tools
-  command: zsh /tmp/zsh_tools.sh
+  script: /tmp/zsh_tools.sh
 - name: chsh zsh
   expect:
     command: chsh -s /usr/bin/zsh root
