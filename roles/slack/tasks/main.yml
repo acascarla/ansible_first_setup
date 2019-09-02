@@ -1,8 +1,8 @@
 ---
 - name: download slack
   get_url:
-    url: https://downloads.slack-edge.com/linux_releases/slack-desktop-{{ slack_version }}-amd64.deb
+    url: https://downloads.slack-edge.com/linux_releases/slack-desktop-4.0.2-amd64.deb
     dest: /tmp/
 - name: install slack 
-  apt: deb=/tmp/slack-desktop-{{ slack_version }}-amd64.deb dpkg_options="skip-same-version"
+  apt: deb=/tmp/slack-desktop-4.0.2-amd64.deb dpkg_options="skip-same-version"
   become: yes

@@ -13,25 +13,25 @@
    - libc6-dev
    - libbz2-dev
   become: yes
-- name: download Python-3.6.{{ python_36_minor_version }}.tar.xz
+- name: download Python-3.7.4.tar.xz
   get_url:
-    url: https://www.python.org/ftp/python/3.6.{{ python_36_minor_version }}/Python-3.6.{{ python_36_minor_version }}.tar.xz
+    url: https://www.python.org/ftp/python/3.7.4/Python-3.7.4.tar.xz
     dest: /tmp/
-- name: uncompress Python-3.6.{{ python_36_minor_version }}.tar.xz
+- name: uncompress Python-3.7.4.tar.xz
   unarchive:
     remote_src: yes
-    src: /tmp/Python-3.6.{{ python_36_minor_version }}.tar.xz
+    src: /tmp/Python-3.7.4.tar.xz
     dest: /tmp/
 - name: configure
   command: ./configure
   args:
-    chdir: /tmp/Python-3.6.{{ python_36_minor_version }}
+    chdir: /tmp/Python-3.7.4.tar.xz
 - name: make
   command: make
   args:
-    chdir: /tmp/Python-3.6.{{ python_36_minor_version }}
+    chdir: /tmp/Python-3.7.4.tar.xz
 - name: make altinstall
   command: make altinstall
   args:
-    chdir: /tmp/Python-3.6.{{ python_36_minor_version }}
+    chdir: /tmp/Python-3.7.4.tar.xz
   become: yes

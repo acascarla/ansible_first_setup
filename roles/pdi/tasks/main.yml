@@ -32,7 +32,7 @@
 
 - name: Download pdi
   get_url:
-    url: https://netix.dl.sourceforge.net/project/pentaho/Data%20Integration/7.1/pdi-ce-7.1.0.0-12.zip
+    url: https://netcologne.dl.sourceforge.net/project/pentaho/Pentaho%208.3/client-tools/pdi-ce-8.3.0.0-371.zip
     dest: /tmp/pdi.zip
     mode: 0440
 

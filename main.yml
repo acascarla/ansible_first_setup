@@ -18,15 +18,14 @@
     - terminator
     - git
     - zsh
-    - postgres
+    - ansible-role-postgresql
     - ansible
     - slack
-    - python36
+    - python37
     - vsc
     - dbeaver
     - docker
     - docker-compose
     - virtualenvwrapper
-    - virtualbox
     - vagrant
     - pdi

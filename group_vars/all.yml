@@ -6,8 +6,9 @@ ansible_sudo_pass: !vault |
           39643136613036323665356165313032386531386462363463373562633830323635343864623962
           6530633364323337320a396163313439633034353930616331643938643632346162356465366530
           3961
-postgres_user:
-  name: oriol
+postgres_user: oriol
+postgresql_users:
+- name: oriol #required; the rest are optional
   password: !vault |
           $ANSIBLE_VAULT;1.1;AES256
           62623035636631626134303530666662333230656239323964323361376638633730346437653862
@@ -15,10 +16,11 @@ postgres_user:
           63653339313366393036306133303138323730393532363965396261613133666163616637346436
           3432663331376233620a346639636661646436363437653766396237633233623734343038636230
           3539
+  priv: ALL
+  role_attr_flags: SUPERUSER,CREATEROLE,CREATEDB,LOGIN,REPLICATION,BYPASSRLS
 git:
   email: oriolalfonso@calidae.com
   name: Oriol Alfonso
-python_36_minor_version: 8
 vagrant_version: 2.1.1
 vagrant_box_folder: ubuntu16
 vagrant_box_image: ubuntu/xenial64

@@ -20,7 +20,7 @@
 [profiles]
   [[default]]
     audible_bell = True
-    background_darkness = 0.8
+    background_darkness = 0.9
     background_type = transparent
     cursor_color = "#729fcf"
     cursor_color_fg = False
@@ -28,6 +28,6 @@
     font = FreeMono 10
     foreground_color = "#ffffff"
     scrollback_lines = 5000
-    show_titlebar = False
+    show_titlebar = True
     urgent_bell = True
     visible_bell = True

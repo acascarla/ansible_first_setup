@@ -12,7 +12,7 @@ A host inventory is just a file with headers: "[hosts_group]" and nodenames like
 ~/.ssh/config with ssh config parameters.
 
 ## 💿 Usage
-- Copy group_vars/all.example to group_vars/all and edit what you need
+- Rename needed variables in all.yml
 - Change hosts file with valid hosts of ~./ssh/config
 - Change main.yml hosts to match desired host, for example localhost, or vagrant
 - Change main.yml the remote_user that will execute the script.
