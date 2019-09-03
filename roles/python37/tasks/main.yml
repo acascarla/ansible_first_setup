@@ -33,3 +33,13 @@
   apt:
     name: python3.7
   become: yes
+- name: add alias to set 3.7 the default bin
+  lineinfile:
+    dest: '{{ profile_file_path }}'
+    line: alias python=/usr/bin/python3.7
+    regexp: ^alias python\=\/usr\/bin\/python3\.7$
+    state: present
+    insertafter: EOF
+    create: True
+  become: yes
+  become_user: '{{ remote_user }}'

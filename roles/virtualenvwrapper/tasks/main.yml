@@ -7,10 +7,14 @@
     path: '{{ profile_file_path }}'
     state: touch
     mode: 0755
+  become: yes
+  become_user: '{{ remote_user }}'
 - name: ensure ~/pipprojects folder exists
   file:
     path: ~/pipprojects
     state: directory
+  become: yes
+  become_user: '{{ remote_user }}'
 - name: add WORKON_HOME env var
   lineinfile:
     dest: '{{ profile_file_path }}'
@@ -19,6 +23,8 @@
     state: present
     insertafter: EOF
     create: True
+  become: yes
+  become_user: '{{ remote_user }}'
 - name: add PROJECT_HOME env var
   lineinfile:
     dest: '{{ profile_file_path }}'
@@ -27,6 +33,8 @@
     state: present
     insertafter: EOF
     create: True
+  become: yes
+  become_user: '{{ remote_user }}'
 - name: add source virtualenvwrapper
   lineinfile:
     dest: '{{ profile_file_path }}'
@@ -35,3 +43,5 @@
     state: present
     insertafter: EOF
     create: True
+  become: yes
+  become_user: '{{ remote_user }}'
