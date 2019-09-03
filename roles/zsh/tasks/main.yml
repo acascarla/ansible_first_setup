@@ -9,6 +9,7 @@
   pip:
     name: pexpect
   become: yes
+# These two steps are the same as: sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
 - name: download zsh master tools
   get_url:
     url: https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh
