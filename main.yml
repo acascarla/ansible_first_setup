@@ -14,7 +14,6 @@
 
   roles:
     - apt
-    - pip
     - terminator
     - git
     - python37
@@ -28,3 +27,4 @@
     - vagrant
     # - zsh
     # - pdi
+    # - pip
