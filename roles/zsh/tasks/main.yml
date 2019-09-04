@@ -1,9 +1,10 @@
 ---
 - name: apt install zsh, git-core
-  apt: name={{item}} state=present
-  with_items:
-   - zsh
-   - git-core
+  apt:
+    name:
+      - zsh
+      - git-core
+    state: present
   become: yes
 - name: pip install pexpect
   pip:

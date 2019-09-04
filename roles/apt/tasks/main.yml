@@ -8,22 +8,23 @@
     upgrade: dist
   become: yes
 - name: install
-  apt: name={{item}} state=present
-  with_items:
-   - git
-   - gitk
-   - mercurial
-   - curl
-   - zip
-   - python3-pip
-   - vim
-   - net-tools
-   - nmap
-   - postgresql-client
-   - shutter
-   - htop
-   - openvpn
-   - network-manager-openvpn-gnome
-   - virtualenv
-   - sshuttle
+  apt:
+    name:
+      - git
+      - gitk
+      - mercurial
+      - curl
+      - zip
+      - python3-pip
+      - vim
+      - net-tools
+      - nmap
+      - postgresql-client
+      - shutter
+      - htop
+      - openvpn
+      - network-manager-openvpn-gnome
+      - virtualenv
+      - sshuttle
+    state: present
   become: yes

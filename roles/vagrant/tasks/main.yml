@@ -1,8 +1,22 @@
 ---
 - name: apt install requirements
-  apt: name={{item}} state=present
-  with_items:
-   - virtualbox
-   - vagrant
+  apt:
+    name:
+      - virtualbox
+    state: present
   become: yes
+- name: check if vagrant is installed
+  command: dpkg-query -W vagrant
+  register: vagrant_check_deb
+  failed_when: vagrant_check_deb.rc > 1
+  changed_when: vagrant_check_deb.rc == 1
+- name: download vagrant
+  get_url:
+    url=https://releases.hashicorp.com/vagrant/2.2.5/vagrant_2.2.5_x86_64.deb
+    dest="/home/{{ remote_user }}/Downloads/vagrant_2.2.5.deb"
+  when: vagrant_check_deb.rc == 1
+- name: apt install vagrant
+  apt: deb="/home/{{ remote_user }}/Downloads/vagrant_2.2.5.deb"
+  become: yes
+  when: vagrant_check_deb.rc == 1
   

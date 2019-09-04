@@ -1,12 +1,13 @@
 ---
 - name: apt install requirements
-  apt: name={{item}} state=present
-  with_items:
-   - apt-transport-https
-   - ca-certificates
-   - curl
-   - gnupg2
-   - software-properties-common
+  apt:
+    name:
+      - apt-transport-https
+      - ca-certificates
+      - curl
+      - gnupg2
+      - software-properties-common
+    state: present
   become: yes
 - name: apt key https://download.docker.com/linux/debian/gpg
   apt_key:

@@ -1,6 +1,9 @@
 ---
 - name: pip install virtualenvwrapper
-  command: pip install virtualenvwrapper
+  pip:
+    name:
+      - virtualenv
+      - virtualenvwrapper
   become: yes
 - name: ensure {{ profile_file_path }} file exists with execution permissions
   file:

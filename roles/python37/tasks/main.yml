@@ -8,19 +8,20 @@
     upgrade: dist
   become: yes
 - name: apt install requirements
-  apt: name={{item}} state=present
-  with_items:
-   - software-properties-common
-   - build-essential
-   - checkinstall
-   - libreadline-gplv2-dev
-   - libncursesw5-dev
-   - libssl-dev
-   - libsqlite3-dev
-   - tk-dev
-   - libgdbm-dev
-   - libc6-dev
-   - libbz2-dev
+  apt:
+    name:
+      - software-properties-common
+      - build-essential
+      - checkinstall
+      - libreadline-gplv2-dev
+      - libncursesw5-dev
+      - libssl-dev
+      - libsqlite3-dev
+      - tk-dev
+      - libgdbm-dev
+      - libc6-dev
+      - libbz2-dev
+    state: present
   become: yes
 - name: apt repository ppa:deadsnakes/ppa
   apt_repository:

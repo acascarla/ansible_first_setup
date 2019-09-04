@@ -7,8 +7,9 @@
   command: /usr/bin/python /tmp/get-pip.py
   become: yes
 - name: pip install flake8, python-dateutil
-  pip: name={{item}} state=present
-  with_items:
-   - flake8
-   - python-dateutil
+  pip:
+    name:
+      - flake8
+      - python-dateutil
+    state: present
   become: yes

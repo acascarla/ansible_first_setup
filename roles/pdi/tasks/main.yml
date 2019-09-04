@@ -23,11 +23,10 @@
 
 - name: Ensure other required packages are on the system
   apt: 
-    name: '{{ item }}'
-  with_items:
-    - libwebkitgtk-1.0-0
-    - zip
-    - unzip
+    name:
+      - libwebkitgtk-1.0-0
+      - zip
+      - unzip
   become: yes
 
 - name: Download pdi
