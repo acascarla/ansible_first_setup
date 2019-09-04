@@ -17,12 +17,15 @@
   become: yes
 - name: apt install postgresql
   apt:
-    name: postgresql-11
+    name:
+      - postgresql-11
+      - python-psycopg2
+      - libpq-dev
   become: yes
 - name: pip install psycopg2
   pip:
     name: psycopg2-binary
-  become: yes
+    extra_args: --user
 - name: activate service
   service:
     name: postgresql
@@ -31,7 +34,7 @@
 - name: create user
   postgresql_user:
     name: '{{ postgres_user.name }}'
-    password: '{{ postgres_user.pass | default(omit) }}'
+    password: '{{ postgres_user.pass }}'
     encrypted: yes
     state: present
     login_user: postgres

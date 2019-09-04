@@ -16,11 +16,12 @@
     - apt
     - terminator
     - git
+    - vsc
     - python37
+    - pip
     - virtualenvwrapper
     - postgres
     - slack
-    - vsc
     - dbeaver
     - docker
     - docker-compose

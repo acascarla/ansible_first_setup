@@ -3,7 +3,7 @@
   apt_repository:
     repo: ppa:serge-rider/dbeaver-ce
     state: present
-    codename: 'bionic'
+    codename: bionic
     update_cache: yes
   become: yes
 - name: apt install dbeaver-ce

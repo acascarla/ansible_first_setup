@@ -23,6 +23,15 @@
       - libbz2-dev
     state: present
   become: yes
+- name: pip install flake8, python-dateutil
+  pip:
+    name:
+      - flake8
+      - python-dateutil
+      - setuptools
+      - wheel
+    extra_args: --user
+    executable: pip3
 - name: apt repository ppa:deadsnakes/ppa
   apt_repository:
     repo: ppa:deadsnakes/ppa

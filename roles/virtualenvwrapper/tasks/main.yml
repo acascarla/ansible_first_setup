@@ -4,7 +4,8 @@
     name:
       - virtualenv
       - virtualenvwrapper
-  become: yes
+    extra_args: --user
+    executable: pip3
 - name: ensure {{ profile_file_path }} file exists with execution permissions
   file:
     path: '{{ profile_file_path }}'
@@ -14,7 +15,7 @@
   become_user: '{{ remote_user }}'
 - name: ensure ~/pipprojects folder exists
   file:
-    path: ~/pipprojects
+    path: /home/{{ remote_user }}/pipprojects
     state: directory
   become: yes
   become_user: '{{ remote_user }}'

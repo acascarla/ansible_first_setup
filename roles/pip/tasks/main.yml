@@ -6,10 +6,8 @@
 - name: python /tmp/get-pip.py (install pip)
   command: /usr/bin/python /tmp/get-pip.py
   become: yes
-- name: pip install flake8, python-dateutil
+- name: pip install flake8
   pip:
     name:
       - flake8
-      - python-dateutil
-    state: present
-  become: yes
+    extra_args: --user

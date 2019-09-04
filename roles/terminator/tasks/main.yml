@@ -5,9 +5,9 @@
   become: yes
 - name: make config dir
   file:
-    path: ~/.config/terminator/
+    path: /home/{{ remote_user }}/.config/terminator/
     state: directory
 - name: set config
   template:
     src: config
-    dest: ~/.config/terminator/
+    dest: /home/{{ remote_user }}/.config/terminator/

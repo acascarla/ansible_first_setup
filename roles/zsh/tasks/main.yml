@@ -1,14 +1,10 @@
 ---
-- name: apt install zsh, git-core
+- name: apt install zsh
   apt:
     name:
       - zsh
-      - git-core
+      - git
     state: present
-  become: yes
-- name: pip install pexpect
-  pip:
-    name: pexpect
   become: yes
 # These two steps are the same as: sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
 - name: download zsh master tools
