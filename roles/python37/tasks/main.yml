@@ -43,5 +43,3 @@
   apt:
     name: python3.7
   become: yes
-- name: install pip3.7
-  command: /usr/bin/python3.7 -m pip install pip

@@ -18,7 +18,6 @@
     - git
     - vsc
     - python37
-    - pip
     - virtualenvwrapper
     - postgres
     - slack

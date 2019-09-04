@@ -15,6 +15,7 @@
       - mercurial
       - curl
       - zip
+      - python-pip
       - python3-pip
       - vim
       - net-tools

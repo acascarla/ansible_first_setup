@@ -2,10 +2,11 @@
 - name: pip install virtualenvwrapper
   pip:
     name:
+      - setuptools
+      - wheel
       - virtualenv
       - virtualenvwrapper
-    extra_args: --user
-    executable: pip3
+  become: yes
 - name: ensure {{ profile_file_path }} file exists with execution permissions
   file:
     path: '{{ profile_file_path }}'
